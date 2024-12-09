@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呈現(渲染)頁面 Hello Bean內容</title>
+</head>
+<body>
+    <fieldset>
+        <legend>呈現(渲染)Hello Bean內容</legend>
+        <!--使用Thymeleaf engine expression Property(getXXX()) Variable-->
+        <!--${} expression針對Variable-->
+        <h2 th:text="${hello.companyName}"></h2>
+        <h2 th:text="${hello.helloString}"></h2>
+        <h2 th:text="${hello.who}"></h2>    
+    </fieldset>
+    
+</body>
+</html>

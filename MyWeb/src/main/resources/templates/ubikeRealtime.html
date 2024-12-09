@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubike即時資訊-區域程序</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Ubike即時資訊-區域程序</legend>
+        <div>
+            <form method="post">
+                <label for="area">區域：</label>
+                <input type="text" id="area" name="area">
+                <button type="submit">查詢</button>
+            </form>
+        </div>
+        <!--確認查詢結果有持續過來-->
+        <div th:if="${result!=null}">
+            <h3>Ubike基座數:<label th:text="${result.size()}"></label></h3>
+            <div>
+                <!--表格-->
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th>區域</th>
+                            <th>站點名稱</th>
+                            <th>站點總車數</th>
+                            <th>可借車位</th>
+                            <th>可還空位</th>
+                            <th>更新時間</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--th:each-->
+                        <tr th:each="ubike : ${result}">
+                            <td th:text="${ubike.sarea}"></td>
+                            <td th:text="${ubike.sna}"></td>
+                            <td th:text="${ubike.total}"></td>
+                            <td th:text="${ubike.available_rent_bikes}"></td>
+                            <td th:text="${ubike.available_return_bikes}"></td>
+                            <td th:text="${ubike.infoTime}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </fieldset>
+    
+</body>
+</html>

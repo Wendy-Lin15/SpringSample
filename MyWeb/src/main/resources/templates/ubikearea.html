@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北市Ubike即時資料查詢</title>
+    <!--thymeleaf expression進行動態URL-->
+    <script th:src="@{/javaScript/vue.global.js}"></script>
+    <script th:src="@{/javaScript/axios.min.js}"></script>
+    <!--樣式class-->
+    <style>
+        .warning{
+            color:red;
+            
+        }
+        .normal{
+            color:black;
+         
+        }
+    </style>
+</head>
+<body>
+    <fieldset id="app">
+        <legend>台北市Ubike即時資料查詢</legend>
+        <div>
+            <label for="area">區域：</label>
+            <!--v-model 雙向綁定-->
+            <input type="text" id="area" v-model="area">
+            <button id="search" v-on:click="qryHandler">查詢</button>
+        </div>
+        <h3>您輸入行政區:{{area}}</h3>
+        <!--查詢結果資料渲染-->
+        <div v-show="isShow">
+            <h5>區域:{{area}} 查詢結果基座數:{{result.length}}</h5>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>區域</th>
+                            <th>站點名稱</th>
+                            <th>站點總車數</th>
+                            <th>可借車位</th>
+                            <th>可還空位</th>
+                            <th>更新時間</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        <!--v-for foreach -->
+                        <tr v-for="ubike in result">
+                            <td>{{ubike.sarea}}</td>
+                            <td>{{ubike.sna}}</td>
+                            <td>{{ubike.total}}</td>
+                            <td v-bind:class="isAviable(ubike.available_rent_bikes)">{{ubike.available_rent_bikes}}</td>
+                            <td>{{ubike.available_return_bikes}}</td>
+                            <td>{{ubike.infoTime}}</td>
+                        </tr>  
+                    </tbody>             
+                </table>
+            </div>
+        </div>
+        <div v-show="isMessage">
+            <h5>訊息:{{message}}</h5>
+        </div>
+    </fieldset>
+    <script>
+        //建立常數,資料模組
+        const appData={
+            area:'中正區',
+            message:'',
+            result:[], //空陣列
+            isShow:false,
+            isMessage:false,
+           
+        };
+        //functions or Event Procedure
+        const functions={
+            //設定聆聽按鈕click事件
+            qryHandler(e){
+                console.log(e);
+                //reset
+                this.message=''; //清空訊息
+                this.result=[]; //清空結果
+                this.isShow=false; //隱藏結果
+                this.isMessage=false; //隱藏訊息
+
+                //取得輸入的區域
+                let area=this.area;
+                console.info('輸入的行政區域:',area);
+                //Service URL
+                let url='../../api/v1/ubike/qry/'+area+'/rawdata';
+                //採用ajax非同步處理呼喚後端服務 get() 採用Request Method-GET
+                axios.get(url)
+                //Http status code 200-299 success callback
+                .then(
+                    //Lambda Function
+                    (resp)=>{
+                        console.log(resp); //data 屬性
+                        app.result=resp.data;
+                        app.isShow=true;
+                    }
+                )
+                //Http status code 400-599 fail callback
+                .catch(
+                    (resp)=>{
+                        console.error(resp.response.data);
+                        //設定訊息
+                        app.message=resp.response.data.message;
+                        app.isMessage=true;
+                       
+                    }
+                ); 
+            },
+            //判斷可用車輛數量
+            isAviable(qty){
+                //轉換成整數
+                value=parseInt(qty);
+                //判斷車輛數
+                if(value<=5){
+                    return 'warning'; //css class
+                }else{
+                    return 'normal';
+                }
+                
+            }
+        }
+        //建構一個Vue Inatance同時掛載在特定DOM(Document Object Model)元素上
+        //createApp()方法會回傳一個Vue Instance 參數架構是採用JS物件(進行初始化設定)
+        const app=Vue.createApp({
+            //設定資料模組
+            data(){
+                return appData;
+            },
+            //設定事件處理程序
+            methods:functions,
+            //delimiters:['[[',']]'], //自訂分隔符號
+        }).mount('#app');
+    </script>
+    
+</body>
+</html>

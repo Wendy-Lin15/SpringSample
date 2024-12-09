@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.gjun.bean.UbikeBean&apos; to &apos;UbikeData&apos;&#x0D;&#x0A;- Original project: &apos;MyWeb&apos;&#x0D;&#x0A;- Original element: &apos;com.gjun.bean.UbikeBean&apos;&#x0D;&#x0A;- Renamed element: &apos;com.gjun.bean.UbikeData&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;UbikeBean&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.gjun.bean{UbikeBean.java[UbikeBean" matchStrategy="1" name="UbikeData" qualified="false" references="true" similarDeclarations="false" stamp="1730516303910" textual="false" version="1.0"/>
+</session>

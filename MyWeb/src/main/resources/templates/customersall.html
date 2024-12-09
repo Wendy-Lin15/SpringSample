@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>客戶資料</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <!--jquery ui css cdn-->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+        <link rel="stylesheet" th:href="@{/css/sweetalert2.min.css}">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+        <!--thymeleaf 動態參考javascript file Vue 3.0-->
+        <script th:src="@{/javascript/vue.global.js}"></script>
+        <script th:src="@{/javascript/sweetalert2.min.js}"></script>
+        <!--thymeleaf embeding JS Array-->
+        <script th:inline="javascript">
+            //產生JS Array(Data) 避開一些HTML Escape問題
+            /*<![CDATA[*/
+            var customers = /*[[${customers}]]*/ [];
+            /*]]>*/
+        </script>
+    </head>
+    <body>
+        <fieldset id="app">
+            <legend>客戶資料</legend>
+            <div>
+                <!--表單頁面 postback-->
+                <form method="post">
+                    <input type="submit" value="客戶資料" class="btn btn-primary"/>
+                </form>
+            </div>
+            <!--區塊 產生資料渲染-->
+            <fieldset v-show="isShow">
+                <legend>客戶資料</legend>  
+                <div>
+                    <h3>記錄數:{{customersData.length}}</h3>
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>操作</th>
+                                <th>客戶編號</th>
+                                <th>客戶名稱</th>
+                                <th>聯絡地址</th>
+                                <th>聯絡電話</th>
+                                <th>國家別</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--vue foreach-->
+                            <tr v-for="(item,index) in customersData">
+                                <td>
+                                    <button class="btn btn-primary" v-on:click="editHandler" v-bind:accesskey="index">編輯</button>
+                                    <button class="btn btn-danger" @click="deleteHandler" v-bind:accesskey="index">刪除</button>
+                                </td>
+                                <td>{{item.customerID}}</td>
+                                <td>{{item.companyName}}</td>
+                                <td>{{item.address}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.country}}</td>
+                            </tr>
+                        </tbody>        
+                    </table>
+                </div>              
+            </fieldset>
+            <!--編輯相對記錄對話盒-->
+            <div id="editDialog" v-show="isDialogShow">
+                <table>
+                    <tr>
+                        <td>客戶編號</td>
+                        <!--採用Vue 指令進行雙向綁定 Model-->
+                        <td><input type="text" v-model="customer.customerID" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>公司行號</td>
+                        <td><input type="text" v-model="customer.companyName"/></td>
+                    </tr>
+                    <tr>
+                        <td>聯絡地址</td>
+                        <td><input type="text" v-model="customer.address"/></td>
+                    </tr>
+                    <tr>
+                        <td>連絡電話</td>
+                        <td><input type="text" v-model="customer.phone"/></td>
+                    </tr>
+                    <tr>
+                        <td>國家別</td>
+                        <td><input type="text" v-model="customer.country"/></td>
+                    </tr>
+                </table>
+                <h4>{{modifyMessage}}</h4>
+            </div>
+        </fieldset>
+    
+        <!--建構一個Vue Instance個體物件 掛載DOM-->
+        <script>
+            //定義資料模組 for Vue 3.0
+            const dataModel={
+                //定義資料屬性
+                message:'',
+                customersData:customers, //將Global變數的customers資料指派給Vue Data Model
+                isShow:false,
+                customer:{}, //刪除或者編輯挑選那一個相對記錄
+                isDialogShow:false, //控制編輯區段是否顯示
+                modifyMessage:'', //更新資料訊息for UI
+            }
+            //定義事件程序或者是功能functions
+            const functions={
+                //編輯相對記錄按鈕的Event Handler
+                editHandler(e){
+                    //-e Event Source
+                    console.log(e);
+                    //reset
+                    app.modifyMessage='';
+    
+                    //區域變數 參照accesskey value(相對資料順序)
+                    let index=e.target.accessKey;
+                    //使用相對順序 取出陣列相對客戶資料
+                    //alert('編輯客戶資料'+index);
+                    //app.customer=app.customersData[index]; //指派客戶資料 對應同一筆資料
+                    //進行副本編輯--將相對物件序列化JSON String 在反序列化成物件
+                    app.customer=JSON.parse(JSON.stringify(app.customersData[index]));
+                    console.log(app.customer);
+                    //啟動編輯對話盒(jQuery UI Dialog) Selector $(selector)
+                    $('#editDialog').dialog(
+                        //JS物件
+                        {
+                            title:'客戶資料編輯',
+                            width:400,
+                            height:320,
+                            //Modal 強制式對話盒為模式對話盒
+                            modal:true,
+                            //設定按鈕
+                            buttons:[
+                                {
+                                    text:'取消編輯',
+                                    class:'btn btn-danger',
+                                    //按鈕事件
+                                    click:function(){
+                                        //關閉對話盒
+                                        $(this).dialog('close');
+                                    }
+                                },
+                                {
+                                    text:'更新資料',
+                                    class:'btn btn-primary',
+                                    click:function(){
+                                        //服務位址
+                                        let urlString='../api/v1/customers/update'
+                                        //相對編輯資料 序列化成json String
+                                        let jsonData=JSON.stringify(app.customer);
+                                        //使用jQuery cored ajax()採用非同步呼喚後端服務傳遞JSON
+                                        $.ajax(
+                                            {
+                                                url:urlString,
+                                                type:'PUT', //不給 預設為GET
+                                                beforeSend:function(xhr){
+                                                    //帶Request Header Content-Type
+                                                    xhr.setRequestHeader('Content-Type','application/json');
+                                                },
+                                                //傳遞JSON String
+                                                data:jsonData,
+                                                //成功回呼 Http status 2xx
+                                                success:function(data,status,xhr){
+                                                    console.log(data); //Message資訊
+                                                    //取出訊息
+                                                    app.modifyMessage=data.message;
+                                                    //同步更新背後陣列(重刷清單)
+                                                    //將對話盒編輯那一筆進行副本copy到相對陣列
+    
+                                                    app.customersData[index]=JSON.parse(JSON.stringify(app.customer));
+                                                },
+                                                //失敗回呼 Http status 4xx 5xx
+                                                error:function(xhr,status,error){
+                                                    //console.log(xhr);
+                                                    //取出錯誤資訊
+                                                    let errorMsg=xhr.responseJSON;
+                                                    console.log(errorMsg);
+                                                    app.modifyMessage=errorMsg.message;
+                                                }
+                                            }
+                                        );
+                                    }
+                                }
+    
+                            ]
+                        }
+                    );
+    
+                },
+                //刪除相對記錄按鈕的Event Handler
+                deleteHandler(e){
+                    console.log(e);
+                    let index=e.target.accessKey;
+                    //使用相對順序 取出陣列相對客戶資料
+                    this.customer=this.customersData[index];
+                    //UI 呈現對話盒(SweetAlert2) 進行確認是否刪除
+                    console.log(this.customer);
+                    //啟動對話盒
+                    Swal.fire(
+                        //JS物件
+                        {
+                            title:'刪除作業',
+                            text:'確認刪除客戶:'+app.customer.customerID+' 資料?',
+                            //修訂確認按鈕文字提示
+                            confirmButtonText:'刪除',
+                            //呈現取消按鈕
+                            showCancelButton:true,
+                            //設定取消按鈕文字提示
+                            cancelButtonText:'取消',
+                        }
+                    ).then(
+                        //callback function
+                        function(result){
+                            //判斷是否確定按鈕被按下
+                            if(result.isConfirmed){
+                                console.log("刪除作業");
+                                //呼叫後端API進行刪除
+                                //服務位址(path variable)
+                                let urlString='../api/v1/customers/delete/'+app.customer.customerID+'/rawdata';
+                                //使用jQuery cored ajax()採用非同步呼叫後端服務
+                                $.ajax(
+                                    {
+                                        url:urlString,
+                                        type:'DELETE', //不給 預設為GET
+                                        //成功回呼 Http status 2xx
+                                        success:function(data,status,xhr){
+                                            console.log(data); //Message資訊
+                                            
+                                            //SweetAlert2 顯示訊息
+                                            Swal.fire(
+                                                {
+                                                    title:'刪除成功',
+                                                    text:data.message,
+                                                    icon:'success',
+                                                    confirmButtonText:'確定'
+                                                }
+                                            );
+                                            //同步更新背後陣列(重刷清單)
+                                            //UI 那一筆還留在畫面 從陣列上移除???
+                                            app.customersData.splice(index,1); //移除相對順序的一筆資料
+                                        },
+                                        //失敗回呼 Http status 4xx 5xx
+                                        error:function(xhr,status,error){
+                                            //console.log(xhr);
+                                            //取出錯誤資訊
+                                            let errorMsg=xhr.responseJSON;
+                                            Swal.fire(
+                                                {
+                                                    title:'刪除失敗!!該客戶可能有訂單!!',
+                                                    text:errorMsg.message,
+                                                    icon:'error',
+                                                    confirmButtonText:'確定'
+                                                }
+                                            );
+                                           
+                                        }
+                                    }
+                                );
+                            }
+                        }
+                    );
+                    
+                },
+            }
+            //設定常數唯讀變數ES6
+            const app=Vue.createApp(
+                //參數(採用物件)設定 為Vue物件產生初始化
+                {
+                    //資料模組
+                   data(){
+                        return dataModel;
+                   },
+                    //事件程序 or functions
+                    methods:functions,
+                   //聽Vue掛載完成之後事件
+                   mounted(){
+                        //判斷Vue Data Model customersData是否有資料
+                        if(this.customersData.length>0){
+                            //有資料則顯示
+                            this.isShow=true;
+                        }
+                   } 
+                }
+    
+            ).mount('#app');
+        </script>
+    </body>
+</html>

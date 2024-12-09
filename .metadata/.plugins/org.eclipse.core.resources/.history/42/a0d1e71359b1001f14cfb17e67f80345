@@ -1,0 +1,21 @@
+package com.gjun.services;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(path="api/v1/hellotest")
+public class testService {
+	
+	public testService() {
+		System.out.println("Test Service....");
+	}
+	
+	//打招呼服務 Request Method-GET 查詢/回應訊息?(Content-type)
+	@GetMapping(path="/sayhello")
+	public String sayhello() {
+		return "How are you?";
+	}
+
+}
