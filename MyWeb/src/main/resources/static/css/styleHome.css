@@ -1,0 +1,213 @@
+* {
+  margin: 0;
+}
+/*----通用設定----*/
+body {
+  background: rgb(245, 245, 245);
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.txt-center {
+  text-align: center;
+}
+.flex-vcenter {
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  font-size: 36px;
+  letter-spacing: 2px;
+  padding: 10px 0px;
+}
+.title-line {
+  background: black;
+  width: 25%;
+  height: 4px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+.txt-white {
+  color: white;
+}
+.bg-white {
+  background: white;
+}
+
+/*----Header 區域設定----*/
+.header {
+  position: fixed;
+  width: 100%;
+  height: 66px;
+  background: rgb(250, 235, 204);
+}
+.header-height {
+  position: relative;
+  height: 66px;
+}
+.header-txt {
+  font-size: 30px;
+  /* background: rgb(144, 144, 221); */
+  position: absolute;
+  top: 20px;
+}
+
+.burger {
+  display: none;
+  width: 36px;
+  height: 24px;
+  position: absolute;
+  top: 22px;
+  right: 0;
+  cursor: pointer;
+}
+.burger1,
+.burger2,
+.burger3 {
+  position: absolute;
+  width: 36px;
+  height: 4px;
+  background: grey;
+  border-radius: 8px;
+}
+.burger1 {
+  top: 0;
+  left: 0;
+}
+.burger2 {
+  top: 10px;
+  left: 0;
+}
+.burger3 {
+  top: 20px;
+  left: 0;
+}
+
+/*----nav bar 導覽列----*/
+.navbar {
+  /* background: rgb(250, 235, 204); */
+  position: fixed;
+  line-height: 66px;
+  top: 0;
+  right: 10%;
+}
+.navbar ul {
+  display: flex;
+}
+.navbar ul li {
+  display: inline-block;
+  padding: 0 10px;
+}
+.navbar ul li:hover {
+  cursor: pointer;
+  background: rgb(249, 223, 171);
+}
+.navbar a {
+  display: block;
+  color: black;
+  font-size: 16px;
+}
+
+/*----content 區域----*/
+.content {
+  padding-top: 66px;
+}
+.section {
+  padding: 40px 20px;
+}
+.area {
+  display: flex;
+  margin-top: 20px;
+}
+
+/*區域劃分*/
+.area1 {
+  width: 50%;
+}
+.area2 {
+  width: calc(100% / 3);
+}
+.area3 {
+  width: 25%;
+}
+.area4 {
+  width: 20%;
+}
+
+/*  二分區塊 關於我  */
+.section-bg {
+  background-image: url(../images/bg-black.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.intro-pic {
+  width: 100%;
+  padding: 30px 0px 0px 0px;
+}
+.area1 {
+  display: flex;
+  flex-direction: column;
+}
+.intro-title {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 10px 0px;
+}
+.intro-txt {
+  font-size: 16px;
+  padding: 0px 10px;
+}
+
+/*  卡片式 分三區塊 HTML網站設計  */
+.area2 {
+  display: flex;
+  flex-direction: column;
+}
+.card {
+  background: rgb(250, 235, 204);
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px gray;
+  margin: 8px;
+  overflow: hidden;
+}
+.card-pic {
+  overflow: hidden;
+}
+.card-pic img {
+  width: 100%;
+  display: block;
+}
+.card-pic:hover img {
+  -webkit-transform: scale(1.5, 1.5);
+  -moz-transform: scale(1.5, 1.5);
+  -o-transform: scale(1.5, 1.5);
+  -ms-transform: scale(1.5, 1.5);
+  transform: scale(1.5, 1.5);
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px 0px;
+  letter-spacing: 2px;
+}
+.txt {
+  padding: 0 10px;
+  line-height: 24px;
+}
+
+/*  按鈕設定  */
+.btn {
+  font-size: 16px;
+  background: rgb(248, 163, 124);
+  margin: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+.btn:hover {
+  cursor: pointer;
+  background: rgb(245, 114, 54);
+}

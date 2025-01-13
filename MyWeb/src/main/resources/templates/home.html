@@ -1,20 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 由外部嵌入的 CSS 檔案-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styleHome.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/styleHome.css" />
+    <!--icon 的 link-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Wendy's首頁</title>
-</head>
-<body style="background-color: bisque;">
-    <h2>歡迎來到Home Page</h2>
+  </head>
+  <body>
+    <!--Header區域-->
+    <div class="header">
+      <div class="container header-height">
+        <!--Header大標題-->
+        <div class="header-txt">歡迎來到Home Page</div>
+        <!--burger 收放 nav的按鈕-->
+        <div class="burger">
+          <div class="burger1"></div>
+          <div class="burger2"></div>
+          <div class="burger3"></div>
+        </div>
+      </div>
+    </div>
+    <!--nav bar 導覽列-->
+    <div class="navbar">
+      <nav>
+        <ul>
+          <li><a href="#">關於我</a></li>
+          <li><a href="#">HTML網站設計</a></li>
+          <li><a href="#">Spring框架設計</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!--content 區域-->
+    <div class="content">
+      <!-- -二分區塊  關於我-->
+      <div class="section section-bg">
+        <div class="container">
+          <div class="title txt-center txt-white">關於我</div>
+          <div class="title-line bg-white"></div>
+          <div class="area">
+            <div class="area1">
+              <img
+                class="intro-pic"
+                th:src="@{/images/momocar.png}"
+                src="../static/images/momocar.png"
+                alt="my"
+              />
+            </div>
+            <div class="area1 flex-vcenter">
+              <div class="intro-title txt-white">簡短介紹</div>
+              <div class="intro-txt txt-white">
+                我來自屏東，轉職找工作，以程式設計為目標而努力。
+                我來自屏東，轉職找工作，以程式設計為目標而努力。
+                我來自屏東，轉職找工作，以程式設計為目標而努力。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--卡片式 分三區塊 HTML網站設計-->
+      <div class="section">
+        <div class="container">
+          <div class="title txt-center">HTML網站設計</div>
+          <div class="title-line"></div>
+          <div class="area">
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  src="../static/images/Umeis.png"
+                  th:src="@{/images/Umeis.png}"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle txt-center">屋麥思-手做甜點蛋糕</div>
+                <div class="txt">
+                  一頁式RWD響應式形象設計網站，搭配導覽列，模擬設計手做甜點蛋糕店家形象網站。
+                </div>
+                <!--按鈕-->
+                <div class="txt-center">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    target="_blank"
+                    onclick="window.open('./CH5-6/CH5-6.html', '_blank')"
+                  >
+                    立即前往
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  th:src="@{/images/aboutChristmas.png}"
+                  src="../static/images/aboutChristmas.png"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle txt-center">聖誕節介紹網站</div>
+                <div class="txt">
+                  利用網路上已有的聖誕節資訊，製作成不同視覺效果的資訊網站。
+                </div>
+                <!--按鈕-->
+                <div class="txt-center">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    target="_blank"
+                    onclick="window.open('./CH2-test/CH2-text.html', '_blank')"
+                  >
+                    立即前往
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  src="../static/images/cardEvent.png"
+                  th:src="@{/images/cardEvent.png}"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle txt-center">活動網站設計</div>
+                <div class="txt">
+                  利用圖與文字搭配，製作成卡片式網站設計，使想要傳遞的訊息更加直接明瞭。
+                </div>
+                <!--按鈕-->
+                <div class="txt-center">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    target="_blank"
+                    onclick="window.open('./CH5-5/CH5-5RWD.html', '_blank')"
+                  >
+                    立即前往
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--area-->
+        </div>
+        <!--container-->
+      </div>
+      <!--section-->
+      <!--Spring-->
+      <div class="section">
+        <div class="container">
+          <div class="title txt-center">Spring框架設計</div>
+          <div class="title-line"></div>
+          <div class="area">
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  src="../static/images/Umeis.png"
+                  th:src="@{/images/Umeis.png}"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle txt-center">會員登入作業</div>
+                <div class="txt">一頁式RWD響應式形象設計網站店家形象網站。</div>
+                <!--按鈕-->
+                <div class="txt-center">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="window.open('http://localhost:8087/users/login', '_blank');"
+                  >
+                    立即前往
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  src="../static/images/aboutChristmas.png"
+                  th:src="@{/images/aboutChristmas.png}"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle txt-center">會員註冊</div>
+                <div class="txt">利用網路上已有的聖誕節資訊。</div>
+                <!--按鈕-->
+                <div class="txt-center">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    target="_blank"
+                    onclick="window.open('./CH2-test/CH2-text.html', '_blank')"
+                  >
+                    立即前往
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  src="../static/images/cardEvent.png"
+                  th:src="@{/images/cardEvent.png}"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle txt-center">活動網站設計</div>
+                <div class="txt">
+                  利用圖與文字搭配，製作成卡片式網站設計，使想要傳遞的訊息更加直接明瞭。
+                </div>
+                <!--按鈕-->
+                <div class="txt-center">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    target="_blank"
+                    onclick="window.open('./CH5-5/CH5-5RWD.html', '_blank')"
+                  >
+                    立即前往
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--第二行 的三分區塊-->
+          <div class="area">
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  src="../static/images/bread.jpg"
+                  th:src="@{/images/momocar.png}"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle">新鮮水果塔</div>
+                <div class="txt">當季新鮮水果搭配香脆塔皮，多層口感滋味</div>
+              </div>
+            </div>
+
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  src="../static/images/momocar.png"
+                  th:src="@{/images/momocar.png}"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle">新鮮水果塔</div>
+                <div class="txt">當季新鮮水果搭配香脆塔皮，多層口感滋味</div>
+              </div>
+            </div>
+
+            <div class="area2 card">
+              <div class="card-pic">
+                <img
+                  src="../static/images/bread.jpg"
+                  th:src="@{/images/momocar.png}"
+                />
+              </div>
+              <div class="card-txt">
+                <div class="subtitle"><a href="#">新鮮水果塔</a></div>
+                <div class="txt">當季新鮮水果搭配香脆塔皮，多層口感滋味</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!---->
+    </div>
+
     <fieldset>
-        <legend><b>連結總集合</b></legend>
-        <li><button onclick="document.location='http://localhost:8087/hello/bean'">ShowCompany</button></li> 
-        <li><a href="http://localhost:8087/hello/bean2">SayHello2</a></li> 
-	    <!--<li><a href="http://localhost:8087/users/register">會員註冊</a></li> -->
-        <!--開新視窗-->
-		<p><a href="http://localhost:8087/users/login" target="_blank">會員登入</a></p>
-        <p><a href="http://localhost:8087/users/qry">會員資料查詢</a></p>
+      <legend><b>連結總集合</b></legend>
+      <li>
+        <button onclick="document.location='http://localhost:8087/hello/bean'">
+          ShowCompany
+        </button>
+      </li>
+      <li>
+        <a href="http://localhost:8087/hello/bean2" target="_blank"
+          >SayHello2</a
+        >
+      </li>
+      <li>
+        <a href="http://localhost:8087/users/register" target="_blank"
+          >會員註冊</a
+        >
+      </li>
+      <!--開新視窗-->
+      <p>
+        <a href="http://localhost:8087/users/login" target="_blank">會員登入</a>
+      </p>
+      <p>
+        <a href="http://localhost:8087/users/qry" target="_blank"
+          >會員資料查詢</a
+        >
+      </p>
+      <p>
+        <a href="http://localhost:8087/customers/all" target="_blank"
+          >所有客戶資料查詢</a
+        >
+      </p>
     </fieldset>
-</body>
+  </body>
 </html>

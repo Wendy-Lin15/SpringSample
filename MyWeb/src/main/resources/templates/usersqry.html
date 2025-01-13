@@ -1,159 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styleUserqry.css}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/styleUserqry.css"
+    />
     <title>會員資料查詢</title>
-    <!--thymeleaf expression $ @->urls #-->
+    <!--thymeleaf expression $->運算變數  @->urls #->挑id -->
     <script th:src="@{/javaScript/jquery-3.7.1.min.js}"></script>
-</head>
-<body>
-    <fieldset>
-        <fieldset>
-            <legend>會員資料查詢</legend>
-            <div>
-                <form method="post">
-                    <table>
-                        <tr>
-                            <td>使用者名稱</td>
-                            <td><input type="text" name="userName" required/></td>
-                            <!--前端防呆，強制輸入 加上required-->
-                        </tr>
-                        <tr>
-                            <td>密碼</td>
-                            <td><input type="password" name="password" required/></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="submit" value="查詢"/></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-            <!--具有查詢結果才Rendering-->
-            <fieldset th:if="${member!=null}">
-                <legend>查詢結果</legend>
-                <div>
-                    <table>
-                        <tr>
-                            <td>使用者名稱</td>
-                            <!--java沒有Property 所以屬性為 setXxx and getXxxx= xxx-->
-                            <td>
-                                <input type="text" th:value="${member.userName}" id="userName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>密碼</td>
-                            <td>
-                                <input type="password" th:value="${member.password}" id="password"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>真實姓名</td>
-                            <td>
-                                <input type="text" th:value="${member.realName}" id="realName"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>E-MAIL</td>
-                            <td>
-                                <input type="text" th:value="${member.email}" id="email"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                               <button id="btnUpdate">更新</button>
-                            </td>
-                        </tr>
-                    </table>
-                    <h3 id="result"></h3>
-                </div>
-                <!--使用thymeleaf 嵌入JavaScript變數內容(查詢到UserName)-->
-                <script th:inline="javascript">
-                    
-                    var userId = /*[[${member.userName}]]*/ '';
-                    var updateServiceURL="[(${updateService})]";
-                </script>
-                <!--進行jQuery聽網頁下載瀏覽器之後引發事件 進行初始化-->
-                <script>
-                
-                    //使用jquery selector 挑選網頁物件 埋入事件.ready()
-                    $(document).ready(
-                        //事件程序
-                        function(){
-                            console.log("網頁下載完成");
-                            //參照出按鈕以及編輯表單欄位
-                            let userName = $("#userName");
-                            let password = $("#password");
-                            let realName = $("#realName");
-                            let email = $("#email");
-                            let btnUpdate = $("#btnUpdate");
-                            //設定按鈕click事件
-                            btnUpdate.click(
-                                //按鈕事件程序
-                                function(){
-                                    //取出所有表單欄位物件輸入內容(同時封裝成一個JavaScript物件->進行序列化成JSON String)
-                                    let data = {
-                                        userName: userName.val(), //val()函數取出或者設定
-                                        password: password.val(),
-                                        realName: realName.val(),
-                                        email: email.val()
-                                    };
-                                    console.log(data);
-                                    //序列化成JSON String 使用JS engine函數JSON.stringify()
-                                    let jsonData = JSON.stringify(data);
-                                    console.log(jsonData);
-                                    //Click事件程序要進行AJAX呼叫(URL???)
-                                    //置換URL 具有path as Parameter
-                                    let targetURL=updateServiceURL.replace('%s',userId);
-                                    console.log(targetURL);
-                                    //進行AJAX呼叫
-                                    $.ajax(
-                                        //設定JS物件
-                                        {
-                                            //服務位址
-                                            url: targetURL,
-                                            //傳送方式
-                                            type: 'PUT',
-                                            //傳送資料
-                                            data: jsonData,
-                                            //設定請求標頭 Content-Type
-                                            beforeSend:function(xhr){
-                                                //XMLHttpRequest物件
-                                                xhr.setRequestHeader("Content-Type","application/json");
-                                                //...
-                                            },
-                                            //成功回應 callback function http status code 2xx
-                                            success:function(data,status,xhr){
-                                                console.log(data); //回應資料 Json物件
-                                                //取出回應訊息
-                                                let message = data.message;
-                                                $("#result").text(message);
-                                                
-                                            },
-                                            //error callback function http status code 4xx 5xx
-                                            error:function(xhr,status,error){
-                                                console.log(xhr);
-                                                let message = xhr.responseJSON.message;
-                                                $("#result").text(message);
-                                            }
-                                        }
-                                    );
-    
-                                }
-                            );
-                            
-    
-                        }
+  </head>
+  <body>
+    <div class="content-outer">
+      <fieldset class="content">
+        <legend>會員資料查詢</legend>
+        <div class="query-form">
+          <form method="post">
+            <table class="query-tab">
+              <tr>
+                <td>使用者名稱</td>
+                <td><input type="text" name="userName" required /></td>
+                <!--前端防呆，強制輸入 加上required-->
+              </tr>
+              <tr>
+                <td>密碼</td>
+                <td><input type="password" name="password" required /></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <input type="submit" value="查詢" class="btn btn-query" />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <!--具有查詢結果才Rendering-->
+        <fieldset class="result-outer" th:if="${member!=null}">
+          <legend>查詢結果</legend>
+          <div class="result-form">
+            <table class="result-tab">
+              <tr>
+                <td>使用者名稱</td>
+                <!--java沒有Property 所以屬性為 setXxx and getXxxx= xxx-->
+                <td>
+                  <input
+                    type="text"
+                    th:value="${member.userName}"
+                    id="userName"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>密碼</td>
+                <td>
+                  <input
+                    type="password"
+                    th:value="${member.password}"
+                    id="password"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>真實姓名</td>
+                <td>
+                  <input
+                    type="text"
+                    th:value="${member.realName}"
+                    id="realName"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>E-MAIL</td>
+                <td>
+                  <input type="text" th:value="${member.email}" id="email" />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <button id="btnUpdate" class="btn btn-update">更新</button>
+                </td>
+              </tr>
+            </table>
+            <h3 id="result"></h3>
+          </div>
+          <!--使用thymeleaf 嵌入JavaScript變數內容(查詢到UserName)-->
+          <script th:inline="javascript">
+            var userId = /*[[${member.userName}]]*/ ""; //如果沒有值，則顯示空值
+            var updateServiceURL = "[(${updateService})]";
+          </script>
+          <!--進行jQuery聽網頁下載瀏覽器之後引發事件 進行初始化-->
+          <script>
+            //使用jquery selector 挑選網頁物件 埋入事件.ready()
+            $(document).ready(
+              //事件程序
+              function () {
+                console.log("網頁下載完成");
+                //參照出按鈕以及編輯表單欄位
+                let userName = $("#userName");
+                let password = $("#password");
+                let realName = $("#realName");
+                let email = $("#email");
+                let btnUpdate = $("#btnUpdate");
+                //設定按鈕click事件
+                btnUpdate.click(
+                  //按鈕事件程序
+                  function () {
+                    //取出所有表單欄位物件輸入內容(同時封裝成一個JavaScript物件->進行序列化成JSON String)
+                    let data = {
+                      userName: userName.val(), //val()函數取出或者設定(是Jquery的函數)
+                      password: password.val(),
+                      realName: realName.val(),
+                      email: email.val(),
+                    };
+                    console.log(data);
+                    //序列化成JSON String 使用JS engine函數JSON.stringify()
+                    let jsonData = JSON.stringify(data);
+                    console.log(jsonData);
+                    //Click事件程序要進行AJAX呼叫(URL???)
+                    //置換URL 具有path as Parameter
+                    let targetURL = updateServiceURL.replace("%s", userId);
+                    console.log(targetURL);
+                    //進行AJAX呼叫
+                    $.ajax(
+                      //設定JS物件
+                      {
+                        //服務位址
+                        url: targetURL,
+                        //傳送方式
+                        type: "PUT",
+                        //傳送資料
+                        data: jsonData,
+                        //設定請求標頭 Content-Type
+                        beforeSend: function (xhr) {
+                          //XMLHttpRequest物件
+                          xhr.setRequestHeader(
+                            "Content-Type",
+                            "application/json"
+                          );
+                          //...
+                        },
+                        //成功回應 callback function http status code 2xx
+                        success: function (data, status, xhr) {
+                          console.log(data); //回應資料 Json物件
+                          //取出回應訊息
+                          let message = data.message;
+                          $("#result").text(message);
+                        },
+                        //error callback function http status code 4xx 5xx
+                        error: function (xhr, status, error) {
+                          console.log(xhr);
+                          let message = xhr.responseJSON.message;
+                          $("#result").text(message);
+                        },
+                      }
                     );
-                </script>
-            </fieldset>
-            <div>
-                <!--inner Text-->
-                <h3 th:text="${message}"></h3>
-            </div>
+                  }
+                );
+              }
+            );
+          </script>
         </fieldset>
-    
-</body>
+        <div>
+          <!--inner Text-->
+          <h3 th:text="${message}"></h3>
+        </div>
+      </fieldset>
+    </div>
+  </body>
 </html>

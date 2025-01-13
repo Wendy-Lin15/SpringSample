@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+}
+body {
+  background-image: url(../images/login-bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+legend {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.content-outer {
+  position: relative;
+  height: 100vh;
+}
+.content {
+  background: gray;
+  border-radius: 8px;
+  border: none;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.query-tab {
+  background: rgb(205, 206, 205);
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px white;
+  padding: 10px;
+  margin: 10px;
+}
+.query-tab tr td {
+  padding: 10px 5px;
+}
+.result-outer {
+  background: #888887;
+  border-radius: 8px;
+}
+.result-tab tr td {
+  padding: 8px 5px;
+}
+
+/*按鈕設定*/
+.btn {
+  padding: 10px;
+  margin: 5px 15px;
+  border-radius: 8px;
+  border: none;
+}
+
+.btn-query,
+.btn-update {
+  font-size: 16px;
+  background: black;
+  color: white;
+}
+
+.btn-query:hover,
+.btn-update:hover {
+  cursor: pointer;
+  color: black;
+  background: rgb(251, 237, 131);
+}
