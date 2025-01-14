@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+}
+h2.activity-list {
+  background: rgb(96 244 107);
+  text-align: center;
+  letter-spacing: 5px;
+  padding: 10px;
+  box-shadow: 5px 5px 3px rgb(128, 128, 128);
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.font-m {
+  font-size: 24px;
+  font-weight: 600;
+}
+.font-s {
+  font-size: 16px;
+}
+
+/*個別區塊的設定*/
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: 66px;
+  background: rgb(162 241 197);
+  box-shadow: 5px 5px 4px gray;
+}
+.header-height {
+  position: relative;
+  display: flex;
+  height: 66px;
+  align-items: center;
+}
+.burger {
+  position: absolute;
+  top: 22px;
+  right: 0;
+  width: 36px;
+  height: 24px;
+  display: none; /*視窗縮小時才會顯示*/
+  cursor: pointer;
+}
+.burger1,
+.burger2,
+.burger3 {
+  position: absolute;
+  width: 36px;
+  height: 4px;
+  background: rgb(75, 75, 75);
+  border-radius: 8px;
+}
+.burger1 {
+  top: 0;
+  left: 0;
+}
+.burger2 {
+  top: 10px;
+  left: 0;
+}
+.burger3 {
+  top: 20px;
+  left: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 10%;
+  line-height: 66px;
+}
+.navbar ul {
+  display: flex; /*目的將底下li標籤變為內元件進行排列*/
+  padding: 0;
+}
+.navbar ul li {
+  display: inline-block; /*將li標籤變成區塊模式(拿掉點點) */
+  padding: 0 10px;
+}
+.navbar ul li:hover {
+  cursor: pointer;
+  background: rgb(121, 179, 147);
+}
+.navbar a {
+  color: black;
+  display: block; /*讓a連結變區塊，當游標移過去時，整個區塊(包含文字上下區塊)都可以點*/
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.content {
+  width: 100%;
+  min-height: 100vh; /*最小值要占滿視窗高度*/
+  padding-top: 100px;
+  background: linear-gradient(
+    180deg,
+    rgb(162 241 197) 20%,
+    rgb(229, 230, 229) 50%
+  );
+}
+.container {
+  /*主要設定內縮效果*/
+  width: 80%;
+  /*水平置中*/
+  margin: 0 auto;
+}
+.card-outer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  width: calc(100% / 3 - 20px);
+  background: rgb(251, 245, 234);
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 2px gray; /*上下  左右  模糊度  顏色*/
+  overflow: hidden; /*所有超出卡片區域的都隱藏起來*/
+}
+.card:hover {
+  cursor: pointer;
+}
+.card:hover img {
+  transform: scale(1.5, 1.5); /*X軸寬度變1.5倍，Y軸寬度變1.5倍*/
+}
+.card-img {
+  /* height: 60%; */
+  overflow: hidden; /*超出的圖片區域隱藏起來*/
+}
+
+.card-img img {
+  width: 100%;
+  display: block; /*圖片變形時不出現空隙*/
+}
+.card-text {
+  padding: 10px;
+}
+/*當視窗小於768px時*/
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+  .card {
+    width: calc(50% - 20px);
+  }
+  .burger {
+    display: block;
+  }
+  .header {
+    z-index: 550;
+  }
+  .navbar {
+    display: none;
+    top: 66px;
+    right: 0;
+    z-index: 500;
+  }
+  .navbar ul {
+    flex-direction: column;
+    background: rgb(162 241 197);
+    width: 240px;
+    height: 100vh;
+  }
+  .rwd-open-navbar {
+    display: block;
+  }
+}
+/*當視窗小於480px時*/
+@media screen and (max-width: 480px) {
+  .card {
+    width: calc(100% - 20px); /*20px為margin的左右寬度*/
+  }
+}

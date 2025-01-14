@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 相容性宣告，模擬使用最新版本的標準模式瀏覽 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1,user-scalable=1"
+    />
+    <!--icon 的 link-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="../static/css/styleUmeis.css" />
+    <link rel="stylesheet" th:href="@{/css/styleUmeis.css}" />
+    <link rel="shortcut icon" href="../static/favicon/favicon3.ico" />
+    <title>屋麥思-手做蛋糕甜點</title>
+  </head>
+  <body>
+    <!--Header 區塊-->
+    <div class="header" id="header">
+      <div class="container header-height">
+        <!--Logo 區塊-->
+        <div class="site-logo">
+          <div class="logo-pic">
+            <a href="#"> <img src="../static/images/umeis-img/32421-birthday-cake-icon.png" 
+              th:src="@{/images/umeis-img/32421-birthday-cake-icon.png}"alt="cake-logo" /> </a>
+          </div>
+          <div class="site-title">美味 s <i class="fa-solid fa-heart" style="font-size: 16px;"></i></div>
+        </div>
+        
+        <!--burger-收放 navbar 的按鈕-->
+        <div class="burger" onclick="menu_touch()">
+          <div class="burger1"></div>
+          <div class="burger2"></div>
+          <div class="burger3"></div>
+        </div>
+      </div>
+    </div>
+    <!--navbar導覽列-->
+    <div class="navbar" id="navbar">
+      <nav>
+        <ul>
+          <li><a href="#">首頁</a></li>
+          <li><a href="#service">服務項目</a></li>
+          <li><a href="#persist">我們的堅持</a></li>
+          <li><a href="#choice">美味精選</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!--content 區域-->
+    <div class="content">
+      <div class="section-cont">
+        <div class="key-vision">
+          <div class="key-vision-pic"></div>
+          <div class="key-vision-txt animateFade">
+            屋麥思 手做蛋糕甜點<br />
+            新鮮現做 美味呈現
+          </div>
+        </div>
+      </div>
+      <!--服務項目的四分區塊-->
+      <div id="service" class="section section-primary service">
+        <div class="container">
+          <div class="title to-center">服務項目</div>
+          <div class="title-line BG-black"></div>
+          <div class="area">
+            <div class="area3 flex-vcenter">
+              <i class="fa-solid fa-utensils"></i>
+              <div class="font-sm">歡迎內用</div>
+            </div>
+            <div class="area3 flex-vcenter">
+              <i class="fa-solid fa-shoe-prints"></i>
+              <div class="font-sm">打包外帶</div>
+            </div>
+            <div class="area3 flex-vcenter">
+              <i class="fa-solid fa-champagne-glasses"></i>
+              <div class="font-sm">派對甜點預定</div>
+            </div>
+            <div class="area3 flex-vcenter">
+              <i class="fa-solid fa-cake-candles"></i>
+              <div class="font-sm">蛋糕預訂</div>
+            </div>
+          </div>
+          <!--按鈕-->
+          <div class="to-center">
+            <button type="button" class="btn btn-primary">立即預約</button>
+          </div>
+        </div>
+      </div>
+      <!--二分區塊 我們的堅持-->
+      <div id="persist" class="section section-secondary section-two-bg">
+        <div class="container">
+          <div class="title to-center txt-white">我們的堅持</div>
+          <div class="title-line BG-white"></div>
+          <div class="area">
+            <div class="area1">
+              <img
+                class="area1-two-pic"
+                src="../static/images/umeis-img/handCakes2.jpg"
+                th:src="@{/images/umeis-img/handCakes2.jpg}"
+                alt="handCakes2"
+              />
+            </div>
+            <div class="area1 flex-vcenter">
+              <div class="subtitle txt-white">堅持新鮮現做</div>
+              <div class="subtitle-txt txt-white">
+                希望每一樣餐點都能讓饕客們享受絕佳口感，因此堅持用新鮮食材，當日手工現做!
+              </div>
+            </div>
+          </div>
+          <div class="area area-rev">
+            <div class="area1 flex-vcenter">
+              <div class="subtitle txt-white">新鮮水果產地直送</div>
+              <div class="subtitle-txt txt-white">
+                當天清晨由配合的農場進行配送，唯有新鮮食材才能創造美味甜點!
+              </div>
+            </div>
+            <div class="area1">
+              <img
+                class="area1-two-pic"
+                src="../static/images/umeis-img/fresh fruit.jpg"
+                th:src="@{/images/umeis-img/fresh fruit.jpg}"
+                alt="fresh fruit"
+              />
+            </div>
+          </div>
+          <div class="area">
+            <div class="area1">
+              <img
+                class="area1-two-pic"
+                src="../static/images/umeis-img/waitress.jpg"
+                th:src="@{/images/umeis-img/waitress.jpg}"
+                alt="waitress"
+              />
+            </div>
+            <div class="area1 flex-vcenter">
+              <div class="subtitle txt-white">完善服務與環境</div>
+              <div class="subtitle-txt txt-white">
+                我們的用心服務以及乾淨整潔的環境，讓您擁有完美的用餐體驗!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--三區塊 卡片式設計-->
+      <div id="choice" class="section section-secondary">
+        <div class="container">
+          <div class="title to-center">美味精選</div>
+          <div class="title-line BG-black"></div>
+          <div class="area">
+
+            <div class="area2 card">
+              <img src="../static/images/umeis-img/fruit tart.jpg" 
+              th:src="@{/images/umeis-img/fruit tart.jpg}" alt="fruit tart" />
+              <div class="card-text">
+                <div class="subtitle to-center">新鮮水果塔</div>
+                <div class="font-sm font-pad">
+                  當季新鮮水果搭配香脆塔皮，多層口感滋味。
+                </div>
+              </div>
+            </div>
+
+            <div class="area2 card">
+              <img src="../static/images/umeis-img/rainbowCake.jpg" 
+              th:src="@{/images/umeis-img/rainbowCake.jpg}" alt="rainbowCake" />
+              <div class="card-text">
+                <div class="subtitle to-center">彩虹蛋糕</div>
+                <div class="font-sm font-pad">
+                  不添加人工色素，採用新鮮水果製作成彩虹顏色。
+                </div>
+              </div>
+          </div>
+
+          <div class="area2 card">
+            <img src="../static/images/umeis-img/birthdaayCake.jpg" 
+            th:src="@{/images/umeis-img/birthdaayCake.jpg}" alt="birthdaayCake" />
+            <div class="card-text">
+              <div class="subtitle to-center">客製化蛋糕</div>
+              <div class="font-sm font-pad">
+                客製化討論訂做，讓您擁有獨一無二的蛋糕。
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- 深色底圖區 -->
+      <div class="section-dark-outer">
+        <div class="section-dark-pic"></div>
+        <div class="section-dark-text">
+          <div class="subtitle txt-white to-center">令人回味甜蜜滋味</div>
+          <div class="subtitle-txt txt-white to-center">給您最完美的用餐體驗!</div>
+        </div>
+      </div>
+  </div>
+
+    <!--底端列 footer 區塊  /&#169; 為Html特殊符號-->
+    <div id="contact" class="footer">
+      <div class="container">
+        <div class="area">
+          <div class="area2 footer-img">
+            <img src="../static/images/umeis-img/32421-birthday-cake-icon.png" 
+            th:src="@{/images/umeis-img/32421-birthday-cake-icon.png}"
+            alt="cake"/>
+          </div>
+          <div class="area2 footer-nav">
+            <div class="subtitle">網站導覽</div>
+            <nav>
+              <ul>
+                <li><a href="#">首頁</a></li>
+                <li><a href="#service">服務項目</a></li>
+                <li><a href="#persist">我們的堅持</a></li>
+                <li><a href="#choice">美味精選</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="area2">
+            <div class="subtitle">聯絡我們</div>
+            <div class="font-sm font-pad">連絡電話:0912-345-678</div>
+            <div class="font-sm font-pad">Email:0912345@gmail.com</div>
+            <div class="copyright font-pad">Copyright &#169; 2025 
+              <span style="white-space: nowrap;">屋麥思-手做蛋糕甜點</span> 
+              <span style="white-space: nowrap;">版權所有</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>  
+    <script src="../static/javaScript/main5-6umeis.js" th:src="@{/javaScript/main5-6umeis.js}"></script>
+  </body>
+</html>

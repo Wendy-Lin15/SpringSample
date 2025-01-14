@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 相容性宣告，模擬使用最新版本的標準模式瀏覽 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1,user-scalable=1"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/style5-5Card.css"
+    />
+    <link rel="stylesheet" th:href="@{/css/style5-5Card.css}" />
+    <title>卡片式設計網站</title>
+  </head>
+  <body>
+    <!--Header 區塊-->
+    <div id="header" class="header">
+      <div class="container header-height">
+        <!--Logo 區塊-->
+        <div class="site-logo">
+          <h1 class="logo-text">活動網站</h1>
+        </div>
+        <!--burger-收放 nav bar的點擊按鈕-->
+        <div id="burger" class="burger" onclick="meun_touch()">
+          <div class="burger1"></div>
+          <div class="burger2"></div>
+          <div class="burger3"></div>
+        </div>
+      </div>
+    </div>
+    <!--nav bar導覽列-->
+    <div id="navbar" class="navbar">
+      <nav>
+        <ul>
+          <li><a href="#">首頁</a></li>
+          <li><a href="#">活動列表</a></li>
+          <li><a href="#">關於我們</a></li>
+          <li><a href="#">聯絡我們</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <h2 class="activity-list">活動資訊</h2>
+        <div class="card-outer">
+          <div class="card">
+            <!--圖片-->
+            <div class="card-img">
+              <!--元HTML的檔案往上兩層，在進入class3-->
+              <img
+                src="../static/images/card-img/christmas.jpg"
+                th:src="@{/images/card-img/christmas.jpg}"
+                alt="christmas"
+              />
+            </div>
+            <!--文字-->
+            <div class="card-text">
+              <div class="font-m">聖誕節活動</div>
+              <div class="font-s">
+                得以用最佳的策略去分析聖誕節市集。若能夠欣賞到聖誕節市集的美，相信我們一定會對聖誕節市集改觀。
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <!--圖片-->
+            <div class="card-img">
+              <img
+                src="../static/images/card-img/newyear2025.jpg"
+                th:src="@{/images/card-img/newyear2025.jpg}"
+                alt="newyear2025"
+              />
+            </div>
+            <!--文字-->
+            <div class="card-text">
+              <div class="font-m">跨年活動</div>
+              <div class="font-s">
+                得以用最佳的策略去分析聖誕節市集。若能夠欣賞到聖誕節市集的美，相信我們一定會對聖誕節市集改觀。
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <!--圖片-->
+            <div class="card-img">
+              <img
+                src="../static/images/card-img/Lantern.jpg"
+                th:src="@{/images/card-img/Lantern.jpg}"
+                alt="Lantern"
+              />
+            </div>
+            <!--文字-->
+            <div class="card-text">
+              <div class="font-m">元宵節活動</div>
+              <div class="font-s">
+                得以用最佳的策略去分析聖誕節市集。若能夠欣賞到聖誕節市集的美，相信我們一定會對聖誕節市集改觀。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="../static/javaScript/jsCH5-5Card.js"
+      th:src="@{/javaScript/jsCH5-5Card.js}"
+    ></script>
+  </body>
+</html>

@@ -13,6 +13,9 @@ legend {
   font-size: 24px;
   font-weight: 600;
 }
+h3 {
+  color: rgb(253, 110, 0);
+}
 
 .content-outer {
   position: relative;

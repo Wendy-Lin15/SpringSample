@@ -211,3 +211,10 @@ body {
   cursor: pointer;
   background: rgb(245, 114, 54);
 }
+/*  底端footer  */
+.copyright {
+  background: rgb(250, 235, 204);
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+}

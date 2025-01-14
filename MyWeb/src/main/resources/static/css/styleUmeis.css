@@ -1,0 +1,421 @@
+/*import字體縮需連結*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+}
+
+/*通用設定*/
+.container {
+  /*主要設定內縮效果*/
+  width: 80%;
+  /*水平置中*/
+  margin: 0 auto;
+}
+body {
+  /*字體的語法*/
+  font-family: "Noto Sans TC", serif;
+}
+.font-sm {
+  font-size: 16px;
+}
+.font-pad {
+  padding: 4px 2px;
+}
+.title {
+  font-size: 35px;
+  padding: 10px 0px 0px 0px;
+}
+.title-line {
+  width: 25%;
+  height: 4px;
+  margin: 5px auto 15px auto;
+  border-radius: 8px;
+}
+.subtitle {
+  font-size: 24px;
+  padding: 8px 0px;
+}
+.to-center {
+  text-align: center;
+}
+.flex-vcenter {
+  align-items: center;
+  justify-content: center;
+}
+.txt-white {
+  color: white;
+}
+.BG-black {
+  background: black;
+}
+.BG-white {
+  background: white;
+}
+
+/*按鈕*/
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  letter-spacing: 2px;
+  border: 0px;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+.btn-primary {
+  font-size: 20px;
+  background: black;
+  color: white;
+}
+.btn-primary:hover {
+  cursor: pointer;
+  background: red;
+}
+
+/*   Header 區塊(頂端列)   */
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: 66px;
+  background: rgb(250, 235, 204);
+  box-shadow: 0px 5px 4px gray;
+  z-index: 550;
+}
+.header-height {
+  position: relative;
+  display: flex;
+  height: 66px;
+}
+.logo-pic {
+  width: 66px;
+}
+.logo-pic img {
+  width: 100%;
+}
+.site-title {
+  position: absolute;
+  top: 30px;
+  left: 63px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.burger {
+  display: none; /*視窗縮小時才會顯示*/
+  width: 36px;
+  height: 24px;
+  position: absolute;
+  top: 22px;
+  right: 0;
+  cursor: pointer;
+}
+.burger1,
+.burger2,
+.burger3 {
+  position: absolute;
+  width: 36px;
+  height: 4px;
+  background: gray;
+  border-radius: 8px;
+}
+.burger1 {
+  top: 0;
+  left: 0;
+}
+.burger2 {
+  top: 10px;
+  left: 0;
+}
+.burger3 {
+  top: 20px;
+  left: 0;
+}
+
+/*   navbar 導覽列    */
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 10%;
+  line-height: 66px;
+  z-index: 550;
+}
+.navbar ul {
+  /*目的將底下li標籤變為內元件進行排列*/
+  display: flex;
+  /*ul裡的padding空間拿掉*/
+  padding: 0;
+}
+.navbar ul li {
+  /*將li標籤變成區塊模式(拿掉點點) */
+  display: inline-block;
+  padding: 0 10px;
+}
+.navbar ul li:hover {
+  cursor: pointer;
+  background: rgb(248, 227, 186);
+}
+.navbar a {
+  /*讓a連結變區塊，當游標移過去時，整個區塊(包含文字上下區塊)都可以點*/
+  display: block;
+  color: black;
+  font-size: 18px;
+}
+
+/*----content 區域---- */
+.content {
+  padding-top: 66px;
+}
+
+/* 主 視 覺 動 畫 */
+.animateFade {
+  opacity: 0;
+  animation-name: animateFade;
+  animation-duration: 2s;
+  animation-fill-mode: forwards; /*最後停在最後一個畫面*/
+  animation-delay: 0.5s;
+
+  -webkit-oanimation-name: animateFade;
+  -webkit-oanimation-duration: 2s;
+  -webkit-oanimation-fill-mode: forwards; /*最後停在最後一個畫面*/
+  -webkit-oanimation-delay: 0.5s;
+}
+@keyframes animateFade {
+  from {
+    opacity: 0;
+    top: 100%;
+  }
+  to {
+    opacity: 1;
+    top: calc(50% + 40px);
+  }
+}
+@-webkit-keyframes animateFade {
+  from {
+    opacity: 0;
+    top: 100%;
+  }
+  to {
+    opacity: 1;
+    top: calc(50% + 40px);
+  }
+}
+
+/* key-vision */
+.key-vision {
+  height: calc(100vh - 66px);
+}
+.key-vision-pic {
+  height: 100%;
+  background-image: url(../images/umeis-img/cakesBar.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: brightness(50%);
+}
+.key-vision-txt {
+  position: absolute;
+  color: white;
+  top: calc(50% + 40px);
+  left: 50%;
+  font-size: 40px;
+  width: 100%;
+  letter-spacing: 2px;
+  text-align: center;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* 區塊劃分 */
+.area1 {
+  width: 50%;
+}
+.area2 {
+  width: calc(100% / 3);
+}
+.area3 {
+  width: 25%;
+}
+.area4 {
+  width: 20%;
+}
+
+/*-----服務項目 的 四分區塊-----*/
+.area {
+  display: flex;
+  padding: 40px 0px;
+  align-items: center;
+}
+.area1,
+.area2,
+.area3,
+.area4 {
+  display: flex;
+  flex-direction: column;
+}
+.section {
+  padding: 40px 20px;
+}
+.section-primary {
+  background: rgb(236, 231, 222);
+}
+.service .font-sm {
+  padding: 5px 0px 25px 0px;
+}
+
+/*------二分區塊 我們的堅持------*/
+.section-secondary {
+  background: rgb(236, 231, 222);
+}
+.section-two-bg {
+  background-image: url(../images/umeis-img/bg-black.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.area1-two-pic {
+  width: 100%;
+}
+.subtitle-txt {
+  font-size: 20px;
+  padding: 6px 8px;
+  line-height: 1.5em;
+}
+
+/*------三分區塊  卡片式設計------*/
+.card img {
+  width: 100%;
+}
+.card {
+  margin: 8px;
+  background: rgb(250, 235, 204);
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px grey;
+  overflow: hidden;
+}
+.card-text {
+  padding: 8px 10px;
+}
+
+/* 深色底圖區 */
+.section-dark-outer {
+  height: 250px;
+  position: relative;
+}
+.section-dark-text {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  letter-spacing: 3px;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.section-dark-pic {
+  width: 100%;
+  height: 250px;
+  background-image: url(../images/umeis-img/bread.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: brightness(60%);
+}
+
+/*-----底端列 footer 區塊-----*/
+
+.footer .area2 {
+  padding: 20px;
+}
+.footer-img img {
+  width: 100%;
+  max-width: 200px;
+}
+.footer-nav nav ul {
+  padding: 0;
+}
+.footer-nav nav ul li {
+  display: block;
+  padding: 4px 0;
+}
+
+/*----- icon 調整----- */
+.fa-heart {
+  color: red;
+}
+.fa-solid {
+  font-size: 36px;
+}
+.fa-utensils {
+  color: rgb(245 2 0);
+}
+.fa-shoe-prints {
+  color: rgb(106 64 17);
+}
+
+.fa-champagne-glasses {
+  color: rgb(233 100 194);
+}
+.fa-cake-candles {
+  color: rgb(245 165 0);
+}
+
+/*----- 視窗改變時 -----*/
+@media screen and (max-width: 768px) {
+  .key-vision-txt {
+    font-size: 30px;
+  }
+  .header-height {
+    justify-content: center;
+  }
+  .site-title {
+    display: none;
+  }
+  .container {
+    width: 90%;
+  }
+  .burger {
+    display: block;
+  }
+  .navbar {
+    display: none;
+    top: 66px;
+    right: 0;
+    z-index: 500;
+  }
+  .navbar ul {
+    flex-direction: column;
+    background: rgb(250, 235, 204);
+    width: 240px;
+    height: 100vh;
+  }
+  .rwd-open-navbar {
+    display: block;
+  }
+
+  .area {
+    flex-direction: column;
+  }
+  .area1,
+  .area2,
+  .area3,
+  .area4 {
+    width: 100%;
+  }
+  .area-rev {
+    flex-direction: column-reverse;
+  }
+}
+
+/*當視窗小於480px時*/
+@media screen and (max-width: 480px) {
+  .card {
+    width: calc(100% - 20px); /*20px為margin的左右寬度*/
+  }
+}

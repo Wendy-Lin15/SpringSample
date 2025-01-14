@@ -21,7 +21,7 @@
     <div class="header">
       <div class="container header-height">
         <!--Header大標題-->
-        <div class="header-txt">歡迎來到Home Page</div>
+        <div class="header-txt">歡迎來到 YC Lin-初學者程式設計</div>
         <!--burger 收放 nav的按鈕-->
         <div class="burger">
           <div class="burger1"></div>
@@ -35,8 +35,8 @@
       <nav>
         <ul>
           <li><a href="#">關於我</a></li>
-          <li><a href="#">HTML網站設計</a></li>
-          <li><a href="#">Spring框架設計</a></li>
+          <li><a href="#html-ds">HTML網站設計</a></li>
+          <li><a href="#spring-ds">Spring框架設計</a></li>
         </ul>
       </nav>
     </div>
@@ -69,7 +69,7 @@
       </div>
 
       <!--卡片式 分三區塊 HTML網站設計-->
-      <div class="section">
+      <div class="section" id="html-ds">
         <div class="container">
           <div class="title txt-center">HTML網站設計</div>
           <div class="title-line"></div>
@@ -84,15 +84,14 @@
               <div class="card-txt">
                 <div class="subtitle txt-center">屋麥思-手做甜點蛋糕</div>
                 <div class="txt">
-                  一頁式RWD響應式形象設計網站，搭配導覽列，模擬設計手做甜點蛋糕店家形象網站。
+                  一頁式RWD響應式形象設計網站，搭配導覽列，設計手做甜點蛋糕店家形象網站。
                 </div>
                 <!--按鈕-->
                 <div class="txt-center">
                   <button
                     type="button"
                     class="btn btn-primary"
-                    target="_blank"
-                    onclick="window.open('./CH5-6/CH5-6.html', '_blank')"
+                    onclick="window.open('http://localhost:8087/htmlTest/umeis', '_blank')"
                   >
                     立即前往
                   </button>
@@ -117,8 +116,7 @@
                   <button
                     type="button"
                     class="btn btn-primary"
-                    target="_blank"
-                    onclick="window.open('./CH2-test/CH2-text.html', '_blank')"
+                    onclick="window.open('http://localhost:8087/htmlTest/christ2', '_blank')"
                   >
                     立即前往
                   </button>
@@ -143,8 +141,7 @@
                   <button
                     type="button"
                     class="btn btn-primary"
-                    target="_blank"
-                    onclick="window.open('./CH5-5/CH5-5RWD.html', '_blank')"
+                    onclick="window.open('http://localhost:8087/htmlTest/cardEvent', '_blank')"
                   >
                     立即前往
                   </button>
@@ -152,13 +149,14 @@
               </div>
             </div>
           </div>
-          <!--area-->
+          <!--area尾-->
         </div>
-        <!--container-->
+        <!--container尾-->
       </div>
-      <!--section-->
+      <!--section尾-->
+
       <!--Spring-->
-      <div class="section">
+      <div class="section" id="spring-ds">
         <div class="container">
           <div class="title txt-center">Spring框架設計</div>
           <div class="title-line"></div>
@@ -166,13 +164,16 @@
             <div class="area2 card">
               <div class="card-pic">
                 <img
-                  src="../static/images/Umeis.png"
-                  th:src="@{/images/Umeis.png}"
+                  src="../static/images/login.png"
+                  th:src="@{/images/login.png}"
                 />
               </div>
               <div class="card-txt">
                 <div class="subtitle txt-center">會員登入作業</div>
-                <div class="txt">一頁式RWD響應式形象設計網站店家形象網站。</div>
+                <div class="txt">
+                  將前端頁面(Html)得到的資料轉到後端資料庫進行驗證，
+                  並將訊息狀態帶到借助樣板引擎(Template Engines)產生的頁面。
+                </div>
                 <!--按鈕-->
                 <div class="txt-center">
                   <button
@@ -189,20 +190,24 @@
             <div class="area2 card">
               <div class="card-pic">
                 <img
-                  src="../static/images/aboutChristmas.png"
-                  th:src="@{/images/aboutChristmas.png}"
+                  src="../static/images/register.png"
+                  th:src="@{/images/register.png}"
                 />
               </div>
               <div class="card-txt">
-                <div class="subtitle txt-center">會員註冊</div>
-                <div class="txt">利用網路上已有的聖誕節資訊。</div>
+                <div class="subtitle txt-center">會員註冊作業</div>
+                <div class="txt">
+                  提供一個Action 調用頁面(GET)與進行會員註冊作業(form
+                  採用POST)， 表單頁面表單欄位 name
+                  attribute對應到注入的JavaBean Member Property 會自動封存資訊
+                </div>
                 <!--按鈕-->
                 <div class="txt-center">
                   <button
                     type="button"
                     class="btn btn-primary"
                     target="_blank"
-                    onclick="window.open('./CH2-test/CH2-text.html', '_blank')"
+                    onclick="window.open('http://localhost:8087/users/register', '_blank')"
                   >
                     立即前往
                   </button>
@@ -213,14 +218,14 @@
             <div class="area2 card">
               <div class="card-pic">
                 <img
-                  src="../static/images/cardEvent.png"
-                  th:src="@{/images/cardEvent.png}"
+                  src="../static/images/qry.png"
+                  th:src="@{/images/qry.png}"
                 />
               </div>
               <div class="card-txt">
-                <div class="subtitle txt-center">活動網站設計</div>
+                <div class="subtitle txt-center">會員查詢及會員更新</div>
                 <div class="txt">
-                  利用圖與文字搭配，製作成卡片式網站設計，使想要傳遞的訊息更加直接明瞭。
+                  資料查詢使用thymeleaf做條件式的結果渲染以及資料更新。
                 </div>
                 <!--按鈕-->
                 <div class="txt-center">
@@ -228,7 +233,7 @@
                     type="button"
                     class="btn btn-primary"
                     target="_blank"
-                    onclick="window.open('./CH5-5/CH5-5RWD.html', '_blank')"
+                    onclick="window.open('http://localhost:8087/users/qry', '_blank')"
                   >
                     立即前往
                   </button>
@@ -237,7 +242,7 @@
             </div>
           </div>
           <!--第二行 的三分區塊-->
-          <div class="area">
+          <!-- <div class="area">
             <div class="area2 card">
               <div class="card-pic">
                 <img
@@ -276,43 +281,22 @@
                 <div class="txt">當季新鮮水果搭配香脆塔皮，多層口感滋味</div>
               </div>
             </div>
+          </div>-->
+        </div>
+        <!--container結束-->
+      </div>
+      <!--Spring的section結束-->
+      <!--底端footer-->
+      <div class="footer">
+        <div>
+          <div class="copyright">
+            Copyright &#169; 2025
+            <span style="white-space: nowrap">YC Lin-初學者程式設計</span>
+            <span style="white-space: nowrap">版權所有</span>
           </div>
         </div>
       </div>
-      <!---->
+      <!--底端footer結束-->
     </div>
-
-    <fieldset>
-      <legend><b>連結總集合</b></legend>
-      <li>
-        <button onclick="document.location='http://localhost:8087/hello/bean'">
-          ShowCompany
-        </button>
-      </li>
-      <li>
-        <a href="http://localhost:8087/hello/bean2" target="_blank"
-          >SayHello2</a
-        >
-      </li>
-      <li>
-        <a href="http://localhost:8087/users/register" target="_blank"
-          >會員註冊</a
-        >
-      </li>
-      <!--開新視窗-->
-      <p>
-        <a href="http://localhost:8087/users/login" target="_blank">會員登入</a>
-      </p>
-      <p>
-        <a href="http://localhost:8087/users/qry" target="_blank"
-          >會員資料查詢</a
-        >
-      </p>
-      <p>
-        <a href="http://localhost:8087/customers/all" target="_blank"
-          >所有客戶資料查詢</a
-        >
-      </p>
-    </fieldset>
   </body>
 </html>
