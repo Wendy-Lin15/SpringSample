@@ -41,13 +41,14 @@ body {
   width: 100%;
   height: 66px;
   background: rgb(250, 235, 204);
+  z-index: 550;
 }
 .header-height {
   position: relative;
   height: 66px;
 }
 .header-txt {
-  font-size: 30px;
+  font-size: 22px;
   /* background: rgb(144, 144, 221); */
   position: absolute;
   top: 20px;
@@ -86,11 +87,11 @@ body {
 
 /*----nav bar 導覽列----*/
 .navbar {
-  /* background: rgb(250, 235, 204); */
   position: fixed;
   line-height: 66px;
   top: 0;
   right: 10%;
+  z-index: 550;
 }
 .navbar ul {
   display: flex;
@@ -146,9 +147,10 @@ body {
   width: 100%;
   padding: 30px 0px 0px 0px;
 }
-.area1 {
+.area-goal {
   display: flex;
   flex-direction: column;
+  margin: 15px;
 }
 .intro-title {
   font-size: 24px;
@@ -217,4 +219,39 @@ body {
   text-align: center;
   height: 60px;
   line-height: 60px;
+}
+
+/*----- 視窗改變時 -----*/
+@media screen and (max-width: 810px) {
+  .header-txt {
+    font-size: 18px;
+  }
+
+  .container {
+    width: 90%;
+  }
+  .burger {
+    display: block;
+  }
+  .navbar {
+    display: none;
+    top: 66px;
+    right: 0px;
+    z-index: 500;
+  }
+  .navbar ul {
+    flex-direction: column;
+    background: rgb(250, 235, 204);
+    width: 200px;
+    height: 100vh;
+  }
+  .area {
+    flex-direction: column;
+  }
+  .area2 {
+    width: 100%;
+  }
+  .rwd-open-navbar {
+    display: block;
+  }
 }

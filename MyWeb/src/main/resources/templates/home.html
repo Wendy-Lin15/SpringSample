@@ -23,7 +23,7 @@
         <!--Header大標題-->
         <div class="header-txt">歡迎來到 YC Lin-初學者程式設計</div>
         <!--burger 收放 nav的按鈕-->
-        <div class="burger">
+        <div class="burger" onclick="homeMenu_touch()">
           <div class="burger1"></div>
           <div class="burger2"></div>
           <div class="burger3"></div>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <!--nav bar 導覽列-->
-    <div class="navbar">
+    <div class="navbar" id="navbar">
       <nav>
         <ul>
           <li><a href="#">關於我</a></li>
@@ -47,21 +47,30 @@
         <div class="container">
           <div class="title txt-center txt-white">關於我</div>
           <div class="title-line bg-white"></div>
-          <div class="area">
-            <div class="area1">
-              <img
-                class="intro-pic"
-                th:src="@{/images/momocar.png}"
-                src="../static/images/momocar.png"
-                alt="my"
-              />
-            </div>
-            <div class="area1 flex-vcenter">
-              <div class="intro-title txt-white">簡短介紹</div>
+          <div class="area-intro">
+            <div class="area-goal">
+              <div class="intro-title txt-white">
+                目的 <i class="fa-solid fa-star" style="color: yellow"></i>
+              </div>
+
               <div class="intro-txt txt-white">
-                我來自屏東，轉職找工作，以程式設計為目標而努力。
-                我來自屏東，轉職找工作，以程式設計為目標而努力。
-                我來自屏東，轉職找工作，以程式設計為目標而努力。
+                這個網站主要目的是把在這一年多裡上課所做的實作聚集起來，方便自己整理，也可以讓觀看的人比較清楚。
+              </div>
+            </div>
+            <div class="area-goal">
+              <div class="intro-title txt-white">
+                簡短介紹 <i class="fa-solid fa-star" style="color: yellow"></i>
+              </div>
+
+              <div class="intro-txt txt-white">
+                我並不是程式相關領域的學生，也可以說我是一個程式小白，
+                從Java基礎語言開始一路慢慢往上學習，當然這一路上遇到很多難題，
+                甚至覺得老師不是用中文上課嗎?
+                一個字一個字分開聽，我知道是什麼意思，
+                但整句合起來怎麼聽不懂了呢?
+                別人3小時可以上完的課，我可能需要半天，甚至到一天才可以上完，
+                播放影片、影片暫停、找資料、重播影片、自己實作，每次大概都是一樣的路徑不停循環。雖然這一路上並不簡單，
+                但當自己做出一點點結果的時候，心中就會有股莫名的成就感，而這些成就感正式支持著我繼續往前面邁進的動力。
               </div>
             </div>
           </div>
@@ -172,7 +181,7 @@
                 <div class="subtitle txt-center">會員登入作業</div>
                 <div class="txt">
                   將前端頁面(Html)得到的資料轉到後端資料庫進行驗證，
-                  並將訊息狀態帶到借助樣板引擎(Template Engines)產生的頁面。
+                  並將訊息狀態帶到樣板引擎產生的頁面。
                 </div>
                 <!--按鈕-->
                 <div class="txt-center">
@@ -197,9 +206,8 @@
               <div class="card-txt">
                 <div class="subtitle txt-center">會員註冊作業</div>
                 <div class="txt">
-                  提供一個Action 調用頁面(GET)與進行會員註冊作業(form
-                  採用POST)， 表單頁面表單欄位 name
-                  attribute對應到注入的JavaBean Member Property 會自動封存資訊
+                  提供方法 調用頁面 進行會員註冊作業， 表單資訊對應到注入的資料
+                  會自動封存資訊。
                 </div>
                 <!--按鈕-->
                 <div class="txt-center">
@@ -298,5 +306,9 @@
       </div>
       <!--底端footer結束-->
     </div>
+    <script
+      src="../static/javaScript/home.js"
+      th:src="@{/javaScript/home.js}"
+    ></script>
   </body>
 </html>
