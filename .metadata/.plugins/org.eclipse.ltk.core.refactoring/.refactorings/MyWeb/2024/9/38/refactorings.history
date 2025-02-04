@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename compilation unit &apos;com.gjun.controller.HomeContriller.java&apos; to &apos;HomeController.java&apos;&#x0D;&#x0A;- Original project: &apos;MyWeb&apos;&#x0D;&#x0A;- Original element: &apos;com.gjun.controller.HomeContriller.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.gjun.controller.HomeController.java&apos;" description="Rename compilation unit &apos;HomeContriller.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.gjun.controller{HomeContriller.java" name="HomeController.java" references="false" stamp="1726643049584" version="1.0"/>
-</session>
